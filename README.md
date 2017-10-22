@@ -21,7 +21,7 @@ Scripting Runtime Version: .NET 4.6
 
 ### 3. Unit Mechanics
 
-- [ ] 01. Moving Object Script
+- [x] 01. Moving Object Script
 - [ ] 02. Creating Destructible Walls
 - [ ] 03. Player Animator Controller
 - [ ] 04. Writing the Player script
