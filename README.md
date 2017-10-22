@@ -10,7 +10,7 @@ Scripting Runtime Version: .NET 4.6
 
 ### 1. Setup and Assets
 
-- [ ] 01. Project Introduction
+- [x] 01. Project Introduction
 - [ ] 02. Player and Enemy Animations
 - [ ] 03. Creating the Tile Prefabs
 
