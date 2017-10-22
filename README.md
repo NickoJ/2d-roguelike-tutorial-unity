@@ -16,7 +16,7 @@ Scripting Runtime Version: .NET 4.6
 
 ### 2. Level Generation
 
-- [ ] 01. Writing the Board Manager
+- [x] 01. Writing the Board Manager
 - [ ] 02. Writing the Game Manager
 
 ### 3. Unit Mechanics
