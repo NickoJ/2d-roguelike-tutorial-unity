@@ -12,7 +12,7 @@ Scripting Runtime Version: .NET 4.6
 
 - [x] 01. Project Introduction
 - [x] 02. Player and Enemy Animations
-- [ ] 03. Creating the Tile Prefabs
+- [x] 03. Creating the Tile Prefabs
 
 ### 2. Level Generation
 
