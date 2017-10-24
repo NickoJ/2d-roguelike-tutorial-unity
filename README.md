@@ -25,7 +25,7 @@ Scripting Runtime Version: .NET 4.6
 - [x] 02. Creating Destructible Walls
 - [x] 03. Player Animator Controller
 - [x] 04. Writing the Player script
-- [ ] 05. Writing the Enemy Script
+- [x] 05. Writing the Enemy Script
 - [ ] 06. Enemy Animator Controller
 
 ### 4. Architecture and Polish

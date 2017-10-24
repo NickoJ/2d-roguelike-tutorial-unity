@@ -33,7 +33,6 @@ public class Player : MovingObject
         food -= 1;
         base.AttemptMove<T>(dir);
 
-        RaycastHit2D hit;
         CheckIfGameOver();
         GameManager.Instance.playersTurn = false;
     }
@@ -49,16 +48,14 @@ public class Player : MovingObject
     {
         if (!GameManager.Instance.playersTurn) return;
 
-        int horizontal = 0;
-        int vertical = 0;
+        Vector2Int direction = new Vector2Int(
+            (int)Input.GetAxisRaw("Horizontal"),
+            (int)Input.GetAxisRaw("Vertical")
+        );
 
-        horizontal = (int)Input.GetAxisRaw("Horizontal");
-        vertical = (int)Input.GetAxisRaw("Vertical");
+        if (direction.x != 0) direction.y = 0;
 
-        if (horizontal != 0) vertical = 0;
-
-        if (horizontal != 0 || vertical != 0)
-            AttemptMove<Wall>(new Vector2Int(horizontal, vertical));
+        if (direction != Vector2Int.zero) AttemptMove<Wall>(direction);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
