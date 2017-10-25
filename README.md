@@ -26,7 +26,7 @@ Scripting Runtime Version: .NET 4.6
 - [x] 03. Player Animator Controller
 - [x] 04. Writing the Player script
 - [x] 05. Writing the Enemy Script
-- [ ] 06. Enemy Animator Controller
+- [x] 06. Enemy Animator Controller
 
 ### 4. Architecture and Polish
 
