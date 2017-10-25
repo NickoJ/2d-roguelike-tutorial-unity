@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MovingObject
 {
@@ -9,6 +10,7 @@ public class Player : MovingObject
     public int pointsPerFood = 10;
     public int pointsPerSoda = 20;
 	public float restartLevelDelay = 1f;
+    public Text foodText;
 
     private Animator animator;
     private int food;
@@ -17,6 +19,7 @@ public class Player : MovingObject
     {
         animator = GetComponent<Animator>();
         food = GameManager.Instance.playerFoodPoints;
+        foodText.text = $"Food: {food}";
 
         base.Start();
     }
@@ -25,12 +28,14 @@ public class Player : MovingObject
     {
         animator.SetTrigger("playerHit");
         food -= loss;
+        foodText.text = $"-{loss} Food: {food}";
         CheckIfGameOver();
     }
 
     protected override void AttemptMove<T>(Vector2Int dir)
     {
         food -= 1;
+        foodText.text = $"Food: {food}";
         base.AttemptMove<T>(dir);
 
         CheckIfGameOver();
@@ -69,11 +74,13 @@ public class Player : MovingObject
         {
             food += pointsPerFood;
             other.gameObject.SetActive(false);
+            foodText.text = $"+{pointsPerFood} Food: {food}";
         }
         else if (other.CompareTag("Soda"))
         {
             food += pointsPerSoda;
             other.gameObject.SetActive(false);
+            foodText.text = $"+{pointsPerSoda} Food: {food}";
         }
     }
 
@@ -84,7 +91,11 @@ public class Player : MovingObject
 
     private void CheckIfGameOver()
     {
-        if (food <= 0) GameManager.Instance.GameOver();
+        if (food <= 0) 
+        {
+            GameManager.Instance.GameOver();
+            enabled = false;
+        }
     }
 
     private IEnumerator RestartDelayed(float delay)
