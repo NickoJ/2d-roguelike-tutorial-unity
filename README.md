@@ -31,5 +31,5 @@ Scripting Runtime Version: .NET 4.6
 ### 4. Architecture and Polish
 
 - [x] 01. Adding UI & Level Transitions
-- [ ] 02. Audio and Sound Manager
+- [x] 02. Audio and Sound Manager
 - [ ] 03. Adding Mobile Controls
