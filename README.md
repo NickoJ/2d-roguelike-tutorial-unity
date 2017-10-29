@@ -32,4 +32,4 @@ Scripting Runtime Version: .NET 4.6
 
 - [x] 01. Adding UI & Level Transitions
 - [x] 02. Audio and Sound Manager
-- [ ] 03. Adding Mobile Controls
+- [x] 03. Adding Mobile Controls

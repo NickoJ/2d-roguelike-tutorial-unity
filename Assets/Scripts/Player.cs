@@ -20,6 +20,8 @@ public class Player : MovingObject
     private Animator animator;
     private int food;
 
+    private Vector2 touchOrigin = -Vector2.one;
+
     protected override void Start()
     {
         animator = GetComponent<Animator>();
@@ -61,10 +63,37 @@ public class Player : MovingObject
     {
         if (!GameManager.Instance.playersTurn) return;
 
-        Vector2Int direction = new Vector2Int(
+        Vector2Int direction = Vector2Int.zero;
+
+        #if UNITY_STANDALONE || UNITY_WEBGL
+
+        direction = new Vector2Int(
             (int)Input.GetAxisRaw("Horizontal"),
             (int)Input.GetAxisRaw("Vertical")
         );
+
+        #else
+
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.touches[0];
+            if (touch.phase == TouchPhase.Began)
+            {
+                touchOrigin = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Ended && touchOrigin.x >= 0)
+            {
+                Vector2 touchEnd = touch.position;
+                Vector2 swipeDir = touchEnd - touchOrigin;
+                touchOrigin.x = -1;
+                if (Mathf.Abs(swipeDir.x) > Mathf.Abs(swipeDir.y))
+                    direction = new Vector2Int((int)(1f * Mathf.Sign(swipeDir.x)), 0);
+                else
+                    direction = new Vector2Int(0, (int)(1f * Mathf.Sign(swipeDir.y)));
+            }
+        }
+
+        #endif
 
         if (direction.x != 0) direction.y = 0;
 
